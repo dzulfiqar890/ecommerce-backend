@@ -1,6 +1,8 @@
 <?php
 // database/migrations/2025_03_08_000006_create_view_laporan_penjualan.php
 
+// database/migrations/2025_03_08_000006_create_view_laporan_penjualan.php
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\DB;
 
@@ -15,7 +17,7 @@ class CreateViewLaporanPenjualan extends Migration
                 SUM(dp.harga_subtotal) AS total_pendapatan,
                 COUNT(DISTINCT p.id) AS jumlah_penjualan
             FROM pesanan p
-            JOIN detail_pesanan dp ON p.id = dp.id
+            JOIN detail_pesanan dp ON p.id = dp.id_pesanan
             WHERE p.status = 'paid'
             GROUP BY DATE(p.tanggal_pesanan)
         ");
@@ -26,3 +28,5 @@ class CreateViewLaporanPenjualan extends Migration
         DB::statement("DROP VIEW IF EXISTS view_laporan_penjualan");
     }
 }
+
+

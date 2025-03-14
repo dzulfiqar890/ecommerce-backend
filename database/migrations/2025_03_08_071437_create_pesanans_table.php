@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_pengguna');
             $table->timestamp('tanggal_pesanan')->useCurrent();
-            $table->enum('status', ['pending', 'paid', 'shipped', 'delivered', 'cancelled'])->default('pending');
-            $table->decimal('total_harga', 10,2);
+            $table->enum('status', ['pending', 'paid'])->default('pending');
+            $table->decimal('total_harga', 15,2);
             $table->timestamps();
 
             $table->foreign('id_pengguna')->references('id')->on('pengguna')->onDelete('cascade');

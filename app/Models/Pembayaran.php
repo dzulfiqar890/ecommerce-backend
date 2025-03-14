@@ -14,7 +14,16 @@ class Pembayaran extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'id_pesanan', 'metode_pembayaran', 'tanggal_pembayaran', 'jumlah_pembayaran', 'status'
+        'id_pesanan',
+        'metode_pembayaran',
+        'tanggal_pembayaran',
+        'jumlah_pembayaran',
+        'status',
+    ];
+
+    protected $casts = [
+        'tanggal_pembayaran' => 'datetime',
+        'jumlah_pembayaran' => 'float',
     ];
 
     public function pesanan()

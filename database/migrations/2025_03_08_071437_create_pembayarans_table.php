@@ -16,8 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('id_pesanan');
             $table->enum('metode_pembayaran', ['transfer_bank', 'e-wallet', 'kartu_kredit', 'cod']);
             $table->timestamp('tanggal_pembayaran')->useCurrent();
-            $table->decimal('jumlah_pembayaran', 10,2);
-            $table->enum('status', ['pending', 'success', 'failed'])->default('pending');
+            $table->decimal('jumlah_pembayaran', 15,2);
+            $table->enum('status', ['pending', 'paid'])->default('pending');
             $table->timestamps();
 
             $table->foreign('id_pesanan')->references('id')->on('pesanan')->onDelete('cascade');

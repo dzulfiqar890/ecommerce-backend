@@ -15,7 +15,7 @@ class CreateTriggerKurangiStok extends Migration
             BEGIN
                 UPDATE produk 
                 SET stok = stok - NEW.jumlah
-                WHERE id_produk = NEW.id_produk;
+                WHERE id = NEW.id_produk;
             END;
         ");
     }

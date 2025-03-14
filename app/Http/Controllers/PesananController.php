@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 
 class PesananController extends Controller
 {
-    // Tampilkan semua pesanan
+    // Tampilkan semua pesanan dengan relasi detailPesanan dan produk
     public function index()
     {
-        $pesanan = Pesanan::all();
+        $pesanan = Pesanan::with(['detailPesanan.produk:id,nama_produk,harga'])->get();
         return response()->json($pesanan);
     }
 
@@ -18,21 +18,26 @@ class PesananController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            // Jika menggunakan autentikasi, kamu bisa mengambil id_pengguna dari user yang login
             'id_pengguna' => 'required|exists:pengguna,id',
-            // tanggal_pesanan otomatis di-set menggunakan default CURRENT_TIMESTAMP di migration
-            'status'      => 'required|in:pending,paid,shipped,delivered,cancelled',
-            'total_harga' => 'required|numeric',
+            'status'      => 'required|in:pending,paid',
+            // Tidak perlu input total_harga, akan diupdate otomatis dari DetailPesananController
         ]);
 
+        // Buat pesanan dengan total_harga awal 0
+        $data['total_harga'] = 0;
         $pesanan = Pesanan::create($data);
+
         return response()->json($pesanan, 201);
     }
+    public function getTotalHargaAttribute()
+{
+    return $this->detailPesanan->sum('harga_subtotal');
+}
 
-    // Tampilkan detail pesanan
+    // Tampilkan detail satu pesanan dengan relasi detailPesanan dan produk
     public function show($id)
     {
-        $pesanan = Pesanan::with('detailPesanan')->findOrFail($id);
+        $pesanan = Pesanan::with(['detailPesanan.produk:id,nama_produk,harga'])->findOrFail($id);
         return response()->json($pesanan);
     }
 
@@ -40,13 +45,15 @@ class PesananController extends Controller
     public function update(Request $request, $id)
     {
         $pesanan = Pesanan::findOrFail($id);
+
         $data = $request->validate([
             'id_pengguna' => 'sometimes|required|exists:pengguna,id',
-            'status'      => 'sometimes|required|in:pending,paid,shipped,delivered,cancelled',
-            'total_harga' => 'sometimes|required|numeric',
+            'status'      => 'sometimes|required|in:pending,paid',
+            // total_harga tidak perlu diupdate manual
         ]);
 
         $pesanan->update($data);
+
         return response()->json($pesanan);
     }
 

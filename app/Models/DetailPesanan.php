@@ -17,7 +17,7 @@ class DetailPesanan extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'id_pesanan', 'id_produk', 'jumlah', 'harga_satuan', 'harga_subtotal'
+        'id_pesanan', 'id_produk', 'jumlah', 'harga_subtotal'
     ];
 
     public function pesanan()
