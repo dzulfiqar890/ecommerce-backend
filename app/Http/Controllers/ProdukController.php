@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Produk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ProdukController extends Controller
 {
@@ -34,7 +35,7 @@ class ProdukController extends Controller
 
     if ($request->hasFile('gambar_produk')) {
         $file = $request->file('gambar_produk');
-        $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+        $filename = hash('sha256', time() . Str::random(40)) . '.' . $file->getClientOriginalExtension();
         $file->storeAs('gambar_produk', $filename, 'public');
         $data['gambar_produk'] = asset('storage/gambar_produk/' . $filename);
     }
@@ -54,23 +55,25 @@ class ProdukController extends Controller
     public function update(Request $request, $id)
     {
         $produk = Produk::findOrFail($id);
+
         $data = $request->validate([
-            'id_kategori'   => 'sometimes|required|exists:kategori,id',
-            'nama_produk'   => 'sometimes|required|string|max:255',
+            'id_kategori'   => 'nullable|exists:kategori,id',
+            'nama_produk'   => 'nullable|string|max:255',
             'deskripsi'     => 'nullable|string',
-            'harga'         => 'sometimes|required|numeric',
-            'stok'          => 'sometimes|required|integer',
+            'harga'         => 'nullable|numeric',
+            'stok'          => 'nullable|integer',
             'gambar_produk' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         if ($request->hasFile('gambar_produk')) {
-
-            $path = $request->file('gambar_produk')->store('gambar_produk', 'public');
-            $data['gambar_produk'] = Storage::url($path);
-        }
+            $file = $request->file('gambar_produk');
+            $filename = hash('sha256', time() . Str::random(40)) . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('gambar_produk', $filename, 'public');
+            $data['gambar_produk'] = asset('storage/gambar_produk/' . $filename);
+        }        
 
         $produk->update($data);
-        return response()->json($produk);
+        return response()->json($produk); 
     }
 
     public function destroy($id)
