@@ -43,7 +43,11 @@ class DetailPesananController extends Controller
     // Tampilkan detail satu detail pesanan
     public function show($id)
     {
-        $detailPesanan = DetailPesanan::with(['produk:id,nama_produk,harga', 'pesanan'])->findOrFail($id);
+        $detailPesanan = DetailPesanan::with([
+        'produk:id,nama_produk,harga',
+        'pesanan.user:id,name'
+    ])->findOrFail($id);
+
         return response()->json($detailPesanan);
     }
 

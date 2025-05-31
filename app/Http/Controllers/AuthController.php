@@ -8,12 +8,17 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
+    public function profile()
+    {
+        $data = User::all();
+        return response()->json($data);
+    }
     // Register
     public function register(Request $request)
 {
     $data = $request->validate([
-        'nama'      => 'required|string|max:100',
-        'email'     => 'required|email|unique:pengguna,email',
+        'name'      => 'required|string|max:100',
+        'email'     => 'required|email|unique:users,email',
         'password'  => 'required|string|min:6|confirmed',
         'no_telepon'=> 'nullable|string',
         'alamat'    => 'nullable|string',
@@ -29,7 +34,7 @@ class AuthController extends Controller
     // atau proses pendaftaran admin dilakukan melalui endpoint berbeda.
 
     $user = User::create([
-        'nama'      => $data['nama'],
+        'name'      => $data['name'],
         'email'     => $data['email'],
         'password'  => Hash::make($data['password']),
         'no_telepon'=> $data['no_telepon'] ?? null,

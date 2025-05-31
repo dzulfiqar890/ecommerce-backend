@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('pesanan', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_pengguna');
+            $table->unsignedBigInteger('id_users');
             $table->timestamp('tanggal_pesanan')->useCurrent();
             $table->enum('status', ['pending', 'paid'])->default('pending');
             $table->decimal('total_harga', 15,2);
             $table->timestamps();
 
-            $table->foreign('id_pengguna')->references('id')->on('pengguna')->onDelete('cascade');
+            $table->foreign('id_users')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

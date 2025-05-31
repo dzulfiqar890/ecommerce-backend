@@ -10,7 +10,11 @@ class PesananController extends Controller
     // Tampilkan semua pesanan dengan relasi detailPesanan dan produk
     public function index()
     {
-        $pesanan = Pesanan::with(['detailPesanan.produk:id,nama_produk,harga'])->get();
+        $pesanan = Pesanan::with([
+            'user:id,name',
+            'detailPesanan.produk:id,nama_produk,harga'
+        ])->get();
+
         return response()->json($pesanan);
     }
 
@@ -18,26 +22,24 @@ class PesananController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'id_pengguna' => 'required|exists:pengguna,id',
-            'status'      => 'required|in:pending,paid',
-            // Tidak perlu input total_harga, akan diupdate otomatis dari DetailPesananController
+            'id_users' => 'required|exists:users,id',
+            'status'  => 'required|in:pending,paid',
         ]);
 
-        // Buat pesanan dengan total_harga awal 0
         $data['total_harga'] = 0;
         $pesanan = Pesanan::create($data);
 
         return response()->json($pesanan, 201);
     }
-    public function getTotalHargaAttribute()
-{
-    return $this->detailPesanan->sum('harga_subtotal');
-}
 
-    // Tampilkan detail satu pesanan dengan relasi detailPesanan dan produk
+    // Tampilkan detail satu pesanan dengan relasi user, detail dan produk
     public function show($id)
     {
-        $pesanan = Pesanan::with(['detailPesanan.produk:id,nama_produk,harga'])->findOrFail($id);
+        $pesanan = Pesanan::with([
+            'user:id,name',
+            'detailPesanan.produk:id,nama_produk,harga'
+        ])->findOrFail($id);
+
         return response()->json($pesanan);
     }
 
@@ -47,9 +49,8 @@ class PesananController extends Controller
         $pesanan = Pesanan::findOrFail($id);
 
         $data = $request->validate([
-            'id_pengguna' => 'sometimes|required|exists:pengguna,id',
-            'status'      => 'sometimes|required|in:pending,paid',
-            // total_harga tidak perlu diupdate manual
+            'id_users' => 'sometimes|required|exists:users,id',
+            'status'  => 'sometimes|required|in:pending,paid',
         ]);
 
         $pesanan->update($data);
@@ -62,6 +63,7 @@ class PesananController extends Controller
     {
         $pesanan = Pesanan::findOrFail($id);
         $pesanan->delete();
+
         return response()->json(['message' => 'Pesanan deleted successfully']);
     }
 }

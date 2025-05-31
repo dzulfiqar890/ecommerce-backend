@@ -11,19 +11,12 @@ class User extends Authenticatable
 {
     use HasApiTokens, Notifiable;
 
-    protected $table = 'pengguna';
-    protected $primaryKey = 'id';
-
     protected $fillable = [
-        'nama', 'email', 'password', 'no_telepon', 'alamat', 'role'
+        'name', 'email', 'password', 'no_telepon', 'alamat', 'role'
     ];
 
     protected $hidden = [
         'password',
     ];
 
-    public function getIdAttribute()
-    {
-        return $this->attributes[$this->primaryKey];
-    }
 }

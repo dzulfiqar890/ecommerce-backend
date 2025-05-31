@@ -17,16 +17,16 @@ class Pesanan extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'id_pengguna', 'tanggal_pesanan', 'status', 'total_harga'
+        'id_users', 'tanggal_pesanan', 'status', 'total_harga'
     ];
 
-    public function pengguna()
+    public function user()
     {
-        return $this->belongsTo(User::class, 'id_pengguna');
+        return $this->belongsTo(User::class, 'id_users');
     }
 
     public function detailPesanan()
     {
-        return $this->hasMany(DetailPesanan::class, 'id_pesanan');
+        return $this->hasMany(DetailPesanan::class, 'id_users');
     }
 }
