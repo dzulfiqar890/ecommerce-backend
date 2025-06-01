@@ -11,7 +11,7 @@ class PesananController extends Controller
     public function index()
     {
         $pesanan = Pesanan::with([
-            'user:id,name',
+            'users:id,name',
             'detailPesanan.produk:id,nama_produk,harga'
         ])->get();
 
@@ -23,7 +23,7 @@ class PesananController extends Controller
     {
         $data = $request->validate([
             'id_users' => 'required|exists:users,id',
-            'status'  => 'required|in:pending,paid',
+            'status'  => 'in:pending,paid',
         ]);
 
         $data['total_harga'] = 0;
@@ -36,7 +36,7 @@ class PesananController extends Controller
     public function show($id)
     {
         $pesanan = Pesanan::with([
-            'user:id,name',
+            'users:id,name',
             'detailPesanan.produk:id,nama_produk,harga'
         ])->findOrFail($id);
 
@@ -50,7 +50,7 @@ class PesananController extends Controller
 
         $data = $request->validate([
             'id_users' => 'sometimes|required|exists:users,id',
-            'status'  => 'sometimes|required|in:pending,paid',
+            'status'  => 'sometimes|in:pending,paid',
         ]);
 
         $pesanan->update($data);

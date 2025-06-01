@@ -17,6 +17,9 @@ use App\Http\Controllers\LaporanController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/daftar', function () {
+    return view('Akun');
+});
 
 Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
 

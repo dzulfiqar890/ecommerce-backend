@@ -87,7 +87,7 @@ class ProdukController extends Controller
             'stok' => $produk->stok,
             'deskripsi' => $produk->deskripsi,
             'gambar_produk' => $produk->gambar_produk,
-            'kategori_id' => $produk->kategori_id,
+            'id_kategori' => $produk->id_kategori,
             'nama_kategori' => $produk->kategori->nama_kategori ?? null,
         ]);
     } catch (\Exception $e) {
@@ -106,7 +106,7 @@ class ProdukController extends Controller
             Storage::delete($file);
         }
         $produk->delete();
-        return response()->json(['message' => 'Produk deleted successfully'], 204);
+        return response()->json(['message' => 'Produk deleted successfully']);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Gagal menghapus produk', 'error' => $e->getMessage()], 500);
         }

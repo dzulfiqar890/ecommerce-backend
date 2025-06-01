@@ -20,13 +20,13 @@ class Pesanan extends Model
         'id_users', 'tanggal_pesanan', 'status', 'total_harga'
     ];
 
-    public function user()
+    public function users()
     {
         return $this->belongsTo(User::class, 'id_users');
     }
 
     public function detailPesanan()
     {
-        return $this->hasMany(DetailPesanan::class, 'id_users');
+        return $this->hasMany(DetailPesanan::class, 'id_pesanan');
     }
 }
