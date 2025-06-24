@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="style.css">
+	<title>Digi Cart</title>
+</head>
+
+<body>
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand"><img src="logo.png"> Digi Cart</a>
+		<ul class="side-menu">
+			<li><a href="/dashboard" class="active"><i class='bx bxs-dashboard icon' ></i> Dashboard</a></li>
+			<li class="divider" data-text="aset fisik">Aset Fisik</li>
+			<li>
+				<a href="#"><i class='bx bxs-inbox icon' ></i> Produk</a>
+			</li>
+			<li><a href="/kategori"><i class='bx bxs-chart icon' ></i> Kategori</a></li>
+			<li><a href="/detail"><i class='bx bxs-widget icon' ></i> Detail Pesanan</a></li>
+			<li class="divider" data-text="layanan">Layanan</li>
+			<li><a href="/pembayaran"><i class='bx bx-table icon' ></i> Pembayaran</a></li>
+			<li><a href="/pesanan"><i class='bx bx-table icon' ></i> Pesanan</a></li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+
+	<!-- NAVBAR -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu toggle-sidebar'></i>
+			<span class="divider"></span>
+			<div class="profile">
+				<img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cGVvcGxlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+					alt="">
+				<ul class="profile-link">
+					<li><a href="#"><i class='bx bxs-log-out-circle'></i> Logout</a></li>
+				</ul>
+			</div>
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			<h1 class="title">Produk</h1>
+			<ul class="breadcrumbs">
+				<li><a href="#">Halaman</a></li>
+				<li class="divider">/</li>
+				<li><a href="#" class="active">Produk</a></li>
+			</ul>
+			<div class="products-grid">
+				<div class="product-card">
+					<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=200&fit=crop"
+						alt="Headphone Wireless">
+					<div class="product-info">
+						<h3>Headphone Wireless Premium</h3>
+						<p class="description">Headphone berkualitas tinggi dengan teknologi noise cancelling</p>
+						<p class="description">Kategori Elektronik</p>
+						<div class="product-details">
+							<span class="price">Rp 1,299,000</span>
+							<span class="stock">Stok: 25</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="product-card">
+					<img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=300&h=200&fit=crop"
+						alt="Smartphone">
+					<div class="product-info">
+						<h3>Smartphone Android Flagship</h3>
+						<p class="description">Smartphone terbaru dengan kamera 108MP dan RAM 12GB</p>
+						<p class="description">Kategori Elektronik</p>
+						<div class="product-details">
+							<span class="price">Rp 8,999,000</span>
+							<span class="stock">Stok: 12</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="product-card">
+					<img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=300&h=200&fit=crop"
+						alt="Laptop Gaming">
+					<div class="product-info">
+						<h3>Laptop Gaming RTX 4070</h3>
+						<p class="description">Laptop gaming dengan prosesor Intel i7 dan RTX 4070</p>
+						<p class="description">Kategori Elektronik</p>
+						<div class="product-details">
+							<span class="price">Rp 18,500,000</span>
+							<span class="stock">Stok: 8</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="product-card">
+					<img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=300&h=200&fit=crop"
+						alt="Smartwatch">
+					<div class="product-info">
+						<h3>Smartwatch Series 9</h3>
+						<p class="description">Smartwatch dengan monitoring kesehatan lengkap</p>
+						<p class="description">Kategori Elektronik</p>
+						<div class="product-details">
+							<span class="price">Rp 4,299,000</span>
+							<span class="stock">Stok: 18</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="product-card">
+					<img src="https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?w=300&h=200&fit=crop"
+						alt="Tablet">
+					<div class="product-info">
+						<h3>Tablet Pro 12.9 inch</h3>
+						<p class="description">Tablet profesional dengan layar Retina dan M2 chip</p>
+						<p class="description">Kategori Elektronik</p>
+						<div class="product-details">
+							<span class="price">Rp 12,900,000</span>
+							<span class="stock">Stok: 6</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="product-card">
+					<img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=300&h=200&fit=crop"
+						alt="Keyboard Mechanical">
+					<div class="product-info">
+						<h3>Keyboard Mechanical RGB</h3>
+						<p class="description">Keyboard gaming mechanical dengan switch blue</p>
+						<p class="description">Kategori Elektronik</p>
+						<div class="product-details">
+							<span class="price">Rp 899,000</span>
+							<span class="stock">Stok: 32</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="product-card">
+					<img src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=300&h=200&fit=crop"
+						alt="Mouse Gaming">
+					<div class="product-info">
+						<h3>Mouse Gaming Wireless</h3>
+						<p class="description">Mouse gaming dengan sensor 25K DPI dan RGB lighting</p>
+						<p class="description">Kategori Elektronik</p>
+						<div class="product-details">
+							<span class="price">Rp 599,000</span>
+							<span class="stock">Stok: 45</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="product-card">
+					<img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=300&h=200&fit=crop"
+						alt="Monitor 4K">
+					<div class="product-info">
+						<h3>Monitor 4K 27 inch</h3>
+						<p class="description">Monitor 4K UHD dengan panel IPS dan HDR support</p>
+						<p class="description">Kategori Elektronik</p>
+						<div class="product-details">
+							<span class="price">Rp 3,299,000</span>
+							<span class="stock">Stok: 15</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="product-card">
+					<img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?w=300&h=200&fit=crop"
+						alt="Camera DSLR">
+					<div class="product-info">
+						<h3>Camera DSLR Full Frame</h3>
+						<p class="description">Camera profesional 24MP dengan video 4K</p>
+						<p class="description">Kategori Elektronik</p>
+						<div class="product-details">
+							<span class="price">Rp 22,500,000</span>
+							<span class="stock">Stok: 4</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="product-card">
+					<img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop"
+						alt="Speaker Bluetooth">
+					<div class="product-info">
+						<h3>Speaker Bluetooth Premium</h3>
+						<p class="description">Speaker portable dengan kualitas suara Hi-Fi</p>
+						<p class="description">Kategori Elektronik</p>
+						<div class="product-details">
+							<span class="price">Rp 1,899,000</span>
+							<span class="stock">Stok: 28</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="product-card">
+					<img src="https://images.unsplash.com/photo-1588508065123-287b28e013da?w=300&h=200&fit=crop"
+						alt="Earbuds">
+					<div class="product-info">
+						<h3>Earbuds True Wireless</h3>
+						<p class="description">Earbuds dengan active noise cancellation</p>
+						<p class="description">Kategori Elektronik</p>
+						<div class="product-details">
+							<span class="price">Rp 2,799,000</span>
+							<span class="stock">Stok: 22</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="product-card">
+					<img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=300&h=200&fit=crop"
+						alt="Router WiFi 6">
+					<div class="product-info">
+						<h3>Router WiFi 6 Gaming</h3>
+						<p class="description">Router gaming dengan teknologi WiFi 6 dan QoS</p>
+						<p class="description">Kategori Elektronik</p>
+							<span class="price">Rp 3,499,000</span>
+							<span class="stock">Stok: 11</span>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</main>
+		<!-- MAIN -->
+	</section>
+</body>
+	<script src="script.js"></script>
+</html>
