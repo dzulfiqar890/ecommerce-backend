@@ -20,7 +20,7 @@
     <!-- ================= HEADER ================= -->
     <header class="bg-blue-900 text-white">
       <div class="container mx-auto flex items-center p-4 space-x-4">
-        <a href="#" class="flex items-center">
+        <a href="/home" class="flex items-center">
           <img
             src="Love Minimal Online Shopping Free Logo (2) 2.png"
             alt="DigiCart Logo"
